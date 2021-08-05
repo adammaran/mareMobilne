@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "100959228441",
+    "project_id": "evidencijanovca",
+    "storage_bucket": "evidencijanovca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100959228441:android:33de51dc7566dad8ae1088",
+        "android_client_info": {
+          "package_name": "com.marko.evidencija_prihoda_rashoda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100959228441-je8n81p0ttcn1uomo5puf6f40qtsh0k5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZXXCrJMaYfaHqTdEvMomnvrf2DjhyWUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100959228441-je8n81p0ttcn1uomo5puf6f40qtsh0k5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
