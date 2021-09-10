@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,8 @@ class SearchScreenState extends State<SearchScreen> {
                 ? _databaseReference.collection('payment_history').snapshots()
                 : _databaseReference
                     .collection('payment_history')
+                    .where('uid',
+                        isEqualTo: FirebaseAuth.instance.currentUser.uid)
                     .where('title', isEqualTo: searchKey)
                     .snapshots(),
             builder: (context, snapshot) {

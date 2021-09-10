@@ -17,19 +17,6 @@ class PaymentHistoryScreenState extends State<PaymentHistoryScreen> {
   int amount;
 
   @override
-  void initState() {
-    PaymentRepository paymentRepo = PaymentRepository();
-    paymentRepo.getCurrentAmount().then((value) => amount = value);
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(PaymentHistoryScreen oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    setState(() {});
-  }
-
-  @override
   Widget build(BuildContext context) {
     PaymentRepository paymentRepo = PaymentRepository();
     return Scaffold(
@@ -41,10 +28,8 @@ class PaymentHistoryScreenState extends State<PaymentHistoryScreen> {
                 leading: Icon(Icons.arrow_downward),
                 title: Text('Uplata na račun'),
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => AddFinancesScreen()));
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/add-finances', (r) => false);
                 }),
             ListTile(
               leading: Icon(Icons.arrow_upward),
@@ -83,17 +68,23 @@ class PaymentHistoryScreenState extends State<PaymentHistoryScreen> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {});
+          },
+          child: Icon(Icons.refresh)),
       appBar: AppBar(
           title: Text("Istorija plaćanja"), automaticallyImplyLeading: false),
       body: FutureBuilder(
           future: paymentRepo.getCurrentAmount(),
           builder: (context, snapshot) {
+            print(snapshot.data);
             return Column(
               children: [
                 Container(
                   padding: EdgeInsets.all(20),
                   child: Text(
-                    amount.toString(),
+                    snapshot.data.toString(),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 26,

@@ -33,7 +33,7 @@ class NewPaymentScreen extends StatelessWidget {
             ),
             ElevatedButton(onPressed: () {
               paymentRepo.removeAmount(titleController.text, amountController.text);
-              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PaymentHistoryScreen()), (r) => false);
+              Navigator.of(context).pushNamedAndRemoveUntil('home', (route) => false);
             }, child: Text('Isplati'))
           ],
         ),

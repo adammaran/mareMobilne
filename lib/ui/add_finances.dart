@@ -30,10 +30,17 @@ class AddFinancesScreen extends StatelessWidget {
                 hintText: "Količina",
               ),
             ),
-            ElevatedButton(onPressed: () {
-              paymentRepo.addAmount(titleController.text, amountController.text);
-              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PaymentHistoryScreen()), (r) => false);
-            }, child: Text('Dodaj'))
+            ElevatedButton(
+                onPressed: () {
+                  paymentRepo.addAmount(
+                      titleController.text, amountController.text);
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PaymentHistoryScreen()),
+                      (r) => false);
+                },
+                child: Text('Dodaj'))
           ],
         ),
       ),
