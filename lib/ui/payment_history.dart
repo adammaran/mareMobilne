@@ -101,6 +101,12 @@ class PaymentHistoryScreenState extends State<PaymentHistoryScreen> {
                               itemBuilder: (_, index) {
                                 return Card(
                                   child: ListTile(
+                                    onTap: () {
+                                      setState(() {
+                                        paymentRepo.deleteTransaction(
+                                            snap.data.elementAt(index).id);
+                                      });
+                                    },
                                     title: Center(
                                         child: Column(
                                       children: [
@@ -123,6 +129,7 @@ class PaymentHistoryScreenState extends State<PaymentHistoryScreen> {
                                               )
                                       ],
                                     )),
+                                    trailing: Icon(Icons.remove),
                                   ),
                                 );
                               }),

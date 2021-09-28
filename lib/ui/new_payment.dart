@@ -31,10 +31,16 @@ class NewPaymentScreen extends StatelessWidget {
                 hintText: "Količina",
               ),
             ),
-            ElevatedButton(onPressed: () {
-              paymentRepo.removeAmount(titleController.text, amountController.text);
-              Navigator.of(context).pushNamedAndRemoveUntil('home', (route) => false);
-            }, child: Text('Isplati'))
+            ElevatedButton(
+                onPressed: () {
+                  paymentRepo.removeAmount(
+                      titleController.text, amountController.text);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PaymentHistoryScreen()));
+                },
+                child: Text('Isplati'))
           ],
         ),
       ),

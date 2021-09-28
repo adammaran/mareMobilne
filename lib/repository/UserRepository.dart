@@ -43,8 +43,17 @@ class UserRepository {
       'uid': FirebaseAuth.instance.currentUser.uid,
       'username': username,
       'email': email
+    }).then((value) {
+      addUserFunds();
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => PaymentHistoryScreen()));
     });
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => PaymentHistoryScreen()));
+  }
+
+  void addUserFunds() async {
+    await _databaseReference
+        .collection('money_status')
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .set({'amount': 10000});
   }
 }

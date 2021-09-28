@@ -80,4 +80,8 @@ class PaymentRepository {
           .update({'id': value.id});
     });
   }
+
+  void deleteTransaction(id) async {
+    _databaseReference.collection('payment_history').doc(id).delete();
+  }
 }
